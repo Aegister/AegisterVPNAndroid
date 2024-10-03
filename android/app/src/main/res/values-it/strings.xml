@@ -1,0 +1,12 @@
+<resources>
+    <string name="vpn_connected">VPN CONNESSO</string>
+    <string name="vpn_disconnected">VPN DISCONNESSO</string>
+    <string name="vpn_wait_connection">In Attesa di Connessione</string>
+    <string name="vpn_authenticating">Autenticazione</string>
+    <string name="vpn_reconnect">Riconnessione</string>
+    <string name="vpn_no_connection">Nessuna Connessione</string>
+    <string name="vpn_connecting">Connessione in Corso</string>
+    <string name="vpn_prepare">Preparazione</string>
+    <string name="vpn_denied">Connessione Negata</string>
+    <string name="unknown_state">Stato sconosciuto</string>
+</resources>

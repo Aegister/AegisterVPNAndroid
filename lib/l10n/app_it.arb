@@ -1,0 +1,135 @@
+{
+  "@@locale": "it",
+  "appTitle": "",
+  "connectVpn": "Connetti VPN",
+  "byteIn": "Byte In",
+  "byteOut": "Byte Out",
+  "stopVpn": "Arresta VPN",
+  "openKillSwitch": "Apri Impostazioni VPN",
+  "refreshStage": "Aggiorna Stato",
+  "getStage": "Ottieni Ultimo Stato",
+  "vpnConnected": "VPN CONNESSA",
+  "vpnDisconnected": "VPN DISCONNESSA",
+  "vpnWaitConnection": "In Attesa di Connessione",
+  "vpnAuthenticating": "Autenticazione in Corso",
+  "vpnReconnect": "Riconnessione",
+  "vpnNoConnection": "Nessuna Connessione",
+  "vpnConnecting": "Connessione in Corso",
+  "vpnPrepare": "Preparazione in Corso",
+  "vpnDenied": "Connessione Negata",
+  "activateVpn": "Attiva VPN",
+  "enterActivationKey": "Inserisci Chiave di Attivazione",
+  "submit": "Invia",
+  "confirmDeletion": "Conferma Cancellazione",
+  "deleteVpnConfig": "Sei sicuro di voler eliminare la configurazione VPN attuale?",
+  "vpnConfigDeleted": "Configurazione VPN eliminata con successo.",
+  "vpnProfileAdded": "Profilo VPN aggiunto con successo.",
+  "errorFetchingConfig": "Chiave di attivazione non valida o errore nel recupero della configurazione.",
+  "errorOccurred": "Si è verificato un errore: $e",
+  "vpnConfigNotFound": "Configurazione VPN non trovata",
+  "enterValidKey": "Per favore inserisci una chiave di attivazione valida.",
+  "settingsTitle": "Impostazioni",
+  "ok": "OK",
+  "cancel": "Annulla",
+  "delete": "Elimina",
+  "confirmation": "Conferma",
+  "@appTitle": {
+    "description": "Titolo dell'applicazione nella barra dell'app"
+  },
+  "@connectVpn": {
+    "description": "Testo per il pulsante Connetti VPN"
+  },
+  "@byteIn": {
+    "description": "Etichetta per i byte in ingresso"
+  },
+  "@byteOut": {
+    "description": "Etichetta per i byte in uscita"
+  },
+  "@stopVpn": {
+    "description": "Azione per arrestare la VPN"
+  },
+  "@openKillSwitch": {
+    "description": "Azione per aprire le impostazioni VPN"
+  },
+  "@refreshStage": {
+    "description": "Azione per aggiornare lo stato della connessione VPN"
+  },
+  "@getStage": {
+    "description": "Azione per ottenere l'ultimo stato della connessione VPN"
+  },
+  "@vpnConnected": {
+    "description": "Messaggio di stato quando la VPN è connessa"
+  },
+  "@vpnDisconnected": {
+    "description": "Messaggio di stato quando la VPN è disconnessa"
+  },
+  "@vpnWaitConnection": {
+    "description": "Messaggio di stato quando la VPN è in attesa di connessione"
+  },
+  "@vpnAuthenticating": {
+    "description": "Messaggio di stato quando la VPN sta autenticando"
+  },
+  "@vpnReconnect": {
+    "description": "Messaggio di stato quando la VPN sta riconnettendo"
+  },
+  "@vpnNoConnection": {
+    "description": "Messaggio di stato quando la VPN non ha connessione"
+  },
+  "@vpnConnecting": {
+    "description": "Messaggio di stato quando la VPN sta connettendo"
+  },
+  "@vpnPrepare": {
+    "description": "Messaggio di stato quando la VPN sta preparando"
+  },
+  "@vpnDenied": {
+    "description": "Messaggio di stato quando la connessione VPN è negata"
+  },
+  "@activateVpn": {
+    "description": "Titolo per lo schermo di attivazione"
+  },
+  "@enterActivationKey": {
+    "description": "Etichetta per il campo di inserimento della chiave di attivazione"
+  },
+  "@submit": {
+    "description": "Etichetta per il pulsante di invio"
+  },
+  "@confirmDeletion": {
+    "description": "Titolo per la finestra di conferma quando si elimina la configurazione VPN"
+  },
+  "@deleteVpnConfig": {
+    "description": "Messaggio per la finestra di conferma quando si elimina la configurazione VPN"
+  },
+  "@vpnConfigDeleted": {
+    "description": "Messaggio mostrato quando la configurazione VPN è stata eliminata con successo"
+  },
+  "@vpnProfileAdded": {
+    "description": "Messaggio mostrato quando il profilo VPN è stato aggiunto con successo"
+  },
+  "@errorFetchingConfig": {
+    "description": "Messaggio mostrato per chiave di attivazione non valida o errore nel recupero della configurazione"
+  },
+  "@errorOccurred": {
+    "description": "Messaggio mostrato quando si verifica un errore"
+  },
+  "@vpnConfigNotFound": {
+    "description": "Messaggio mostrato quando la configurazione VPN non viene trovata"
+  },
+  "@enterValidKey": {
+    "description": "Messaggio mostrato quando non viene inserita una chiave di attivazione valida"
+  },
+  "@settingsTitle": {
+    "description": "Titolo per lo schermo delle impostazioni"
+  },
+  "@ok": {
+    "description": "Etichetta per il pulsante OK"
+  },
+  "@cancel": {
+    "description": "Etichetta per il pulsante Annulla"
+  },
+  "@delete": {
+    "description": "Etichetta per il pulsante Elimina"
+  },
+  "@confirmation": {
+    "description": "Titolo per le finestre di conferma"
+  }
+}

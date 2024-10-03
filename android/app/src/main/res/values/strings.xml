@@ -1,0 +1,12 @@
+<resources>
+    <string name="vpn_connected">VPN CONNECTED</string>
+    <string name="vpn_disconnected">VPN DISCONNECTED</string>
+    <string name="vpn_wait_connection">Waiting for Connection</string>
+    <string name="vpn_authenticating">Authenticating</string>
+    <string name="vpn_reconnect">Reconnecting</string>
+    <string name="vpn_no_connection">No Connection</string>
+    <string name="vpn_connecting">Connecting</string>
+    <string name="vpn_prepare">Preparing</string>
+    <string name="vpn_denied">Connection Denied</string>
+    <string name="unknown_state">Unknown State</string>
+</resources>

@@ -1,0 +1,135 @@
+{
+  "@@locale": "en",
+  "appTitle": "",
+  "connectVpn": "Connect VPN",
+  "byteIn": "Byte In",
+  "byteOut": "Byte Out",
+  "stopVpn": "Stop VPN",
+  "openKillSwitch": "Open VPN Settings",
+  "refreshStage": "Refresh Status",
+  "getStage": "Get Latest Status",
+  "vpnConnected": "VPN CONNECTED",
+  "vpnDisconnected": "VPN DISCONNECTED",
+  "vpnWaitConnection": "Waiting for Connection",
+  "vpnAuthenticating": "Authenticating",
+  "vpnReconnect": "Reconnecting",
+  "vpnNoConnection": "No Connection",
+  "vpnConnecting": "Connecting",
+  "vpnPrepare": "Preparing",
+  "vpnDenied": "Connection Denied",
+  "activateVpn": "Activate VPN",
+  "enterActivationKey": "Enter Activation Key",
+  "submit": "Submit",
+  "confirmDeletion": "Confirm Deletion",
+  "deleteVpnConfig": "Are you sure you want to delete the current VPN configuration?",
+  "vpnConfigDeleted": "VPN configuration successfully deleted.",
+  "vpnProfileAdded": "VPN profile successfully added.",
+  "errorFetchingConfig": "Invalid activation key or error fetching configuration.",
+  "errorOccurred": "An error occurred: $e",
+  "vpnConfigNotFound": "VPN configuration not found",
+  "enterValidKey": "Please enter a valid activation key.",
+  "settingsTitle": "Settings",
+  "ok": "OK",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "confirmation": "Confirmation",
+  "@appTitle": {
+    "description": "Title of the application in the app bar"
+  },
+  "@connectVpn": {
+    "description": "Text for the Connect VPN button"
+  },
+  "@byteIn": {
+    "description": "Label for incoming bytes"
+  },
+  "@byteOut": {
+    "description": "Label for outgoing bytes"
+  },
+  "@stopVpn": {
+    "description": "Action to stop the VPN"
+  },
+  "@openKillSwitch": {
+    "description": "Action to open VPN settings"
+  },
+  "@refreshStage": {
+    "description": "Action to refresh the VPN connection status"
+  },
+  "@getStage": {
+    "description": "Action to get the latest VPN connection status"
+  },
+  "@vpnConnected": {
+    "description": "Status message when the VPN is connected"
+  },
+  "@vpnDisconnected": {
+    "description": "Status message when the VPN is disconnected"
+  },
+  "@vpnWaitConnection": {
+    "description": "Status message when the VPN is waiting for connection"
+  },
+  "@vpnAuthenticating": {
+    "description": "Status message when the VPN is authenticating"
+  },
+  "@vpnReconnect": {
+    "description": "Status message when the VPN is reconnecting"
+  },
+  "@vpnNoConnection": {
+    "description": "Status message when the VPN has no connection"
+  },
+  "@vpnConnecting": {
+    "description": "Status message when the VPN is connecting"
+  },
+  "@vpnPrepare": {
+    "description": "Status message when the VPN is preparing"
+  },
+  "@vpnDenied": {
+    "description": "Status message when the VPN connection is denied"
+  },
+  "@activateVpn": {
+    "description": "Title for the activation screen"
+  },
+  "@enterActivationKey": {
+    "description": "Label for the activation key input field"
+  },
+  "@submit": {
+    "description": "Label for the submit button"
+  },
+  "@confirmDeletion": {
+    "description": "Title for the confirmation dialog when deleting the VPN configuration"
+  },
+  "@deleteVpnConfig": {
+    "description": "Message for the confirmation dialog when deleting the VPN configuration"
+  },
+  "@vpnConfigDeleted": {
+    "description": "Message shown when the VPN configuration has been successfully deleted"
+  },
+  "@vpnProfileAdded": {
+    "description": "Message shown when the VPN profile has been successfully added"
+  },
+  "@errorFetchingConfig": {
+    "description": "Message shown for invalid activation key or error fetching the configuration"
+  },
+  "@errorOccurred": {
+    "description": "Message shown when an error occurs"
+  },
+  "@vpnConfigNotFound": {
+    "description": "Message shown when the VPN configuration is not found"
+  },
+  "@enterValidKey": {
+    "description": "Message shown when an invalid activation key is entered"
+  },
+  "@settingsTitle": {
+    "description": "Title for the settings screen"
+  },
+  "@ok": {
+    "description": "Label for the OK button"
+  },
+  "@cancel": {
+    "description": "Label for the Cancel button"
+  },
+  "@delete": {
+    "description": "Label for the Delete button"
+  },
+  "@confirmation": {
+    "description": "Title for confirmation dialogs"
+  }
+}
