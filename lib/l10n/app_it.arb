@@ -2,9 +2,15 @@
   "@@locale": "it",
   "appTitle": "",
   "connectVpn": "Connetti VPN",
+  "connect": "Connetti",
   "byteIn": "Byte In",
   "byteOut": "Byte Out",
   "stopVpn": "Arresta VPN",
+  "welcome": "Benvenuti in Aegister VPN",
+  "next": "Avanti",
+  "getYourActivationKey": "Ottenere la chiave di attivazione",
+  "welcomeMessage": "La vostra connessione sicura a Internet.",
+  "activationKeyInstructions": "Visitate la nostra piattaforma app.aegister.com per ottenere la chiave di attivazione.",
   "openKillSwitch": "Apri Impostazioni VPN",
   "refreshStage": "Aggiorna Stato",
   "getStage": "Ottieni Ultimo Stato",
@@ -133,3 +139,4 @@
     "description": "Titolo per le finestre di conferma"
   }
 }
+

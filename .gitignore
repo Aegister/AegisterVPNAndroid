@@ -46,18 +46,9 @@ app.*.map.json
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 /assets/vpn
-/build/app/intermediates
-/build/app/outputs/sdk-dependencies
-/build/app/tmp
-/build/app/kotlinToolingMetadata
-/build/app/outputs/apk/release
-/build/app/outputs/logs
-/build/f0f7b7c74e0cb0abb7131f886e5ff844
-build/.last_build_id
+/build
 *.stamp
 *.dill
-/build/23724d0ed5dd1e68f9e7457322d38ce6
-/build/app/generated
 
 
 
@@ -202,3 +193,4 @@ app.*.symbols
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.json
+untranslated_messages.json

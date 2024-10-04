@@ -33,6 +33,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context);
+    final brightness = MediaQuery.of(context).platformBrightness;
 
     return Scaffold(
       appBar: AppBar(title: Text(localizations?.settingsTitle ?? 'Settings')),
@@ -41,6 +42,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Image.asset(
+              brightness == Brightness.dark ? 'assets/images/Logo.png' : 'assets/images/Logo-black.png',
+              height: 55,
+            ),
+            SizedBox(height: 20),
+
             TextField(
               controller: _activationKeyController,
               decoration: InputDecoration(
@@ -50,7 +57,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
             SizedBox(height: 20),
+
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF2584BE),
+                foregroundColor: Colors.white,
+              ),
               child: Text(localizations?.submit ?? 'Submit'),
               onPressed: () async {
                 String activationKey = _activationKeyController.text;
@@ -58,8 +70,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   await fetchOvpnConfig(activationKey);
                 } else {
                   setState(() {
-                    error = localizations?.enterValidKey ??
-                        'Please enter a valid activation key.';
+                    error = localizations?.enterValidKey ?? 'Please enter a valid activation key.';
                   });
                 }
               },

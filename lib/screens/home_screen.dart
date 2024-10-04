@@ -63,6 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
+    final brightness = MediaQuery.of(context).platformBrightness;
+
     return Scaffold(
       appBar: AppBar(title: Text(localizations.appTitle)),
       body: Center(
@@ -71,10 +73,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              // Add the logo image based on the brightness (dark/light mode)
+              Image.asset(
+                brightness == Brightness.dark ? 'assets/images/Logo.png' : 'assets/images/Logo-black.png',
+                height: 55,
+              ),
+              SizedBox(height: 20),
+
               TextButton(
                 style: TextButton.styleFrom(
                   shape: StadiumBorder(),
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor: Color(0xFF2584BE),
+                  foregroundColor: Colors.white,
                 ),
                 child: Text(
                   _vpnState == VpnEngine.vpnDisconnected
@@ -85,6 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: _connectClick,
               ),
               SizedBox(height: 20),
+
+              // VPN status
               StreamBuilder<VpnStatus?>(
                 initialData: VpnStatus(),
                 stream: VpnEngine.vpnStatusSnapshot(),
@@ -92,6 +104,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "${localizations.byteIn}: ${snapshot.data?.byteIn ?? ""}, ${localizations.byteOut}: ${snapshot.data?.byteOut ?? ""}",
                       textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: brightness == Brightness.dark ? Colors.white70 : Colors.black87,
+                      ),
                     ),
               ),
             ],
@@ -100,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
 
   void _connectClick() {
     if (_vpnConfig == null) {

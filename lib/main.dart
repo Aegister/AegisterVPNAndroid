@@ -6,7 +6,6 @@ import 'screens/settings_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   String? activationKey = await getStoredActivationKey();
@@ -22,9 +21,28 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'AegisterVPN',
+
+      // Define light theme
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Color(0xFF2C4D75)),
+        brightness: Brightness.light,
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: Color(0xFF2584BE),
+          brightness: Brightness.light,
+        ),
       ),
+
+      // Define dark theme
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSwatch(
+          accentColor: Color(0xFF2584BE),
+          brightness: Brightness.dark,
+        ),
+      ),
+
+      // Set themeMode to system
+      themeMode: ThemeMode.system,
+
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -63,15 +81,11 @@ class MainTabController extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Image.asset(
-            'assets/images/Logo.png',
-            height: 40,
-          ),
+          title: Text(""),
           bottom: TabBar(
             tabs: [
-              Tab(icon: Icon(Icons.vpn_key), text: "Connect"),
-              Tab(icon: Icon(Icons.settings), text: "Settings"),
-            ],
+              Tab(icon: Icon(Icons.vpn_key), text: AppLocalizations.of(context)?.connect ?? "Connect"),
+              Tab(icon: Icon(Icons.settings), text: AppLocalizations.of(context)?.settingsTitle ?? "Settings"),            ],
           ),
         ),
         body: TabBarView(

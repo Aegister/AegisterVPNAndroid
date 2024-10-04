@@ -2,6 +2,7 @@
   "@@locale": "en",
   "appTitle": "",
   "connectVpn": "Connect VPN",
+  "connect": "Connect",
   "byteIn": "Byte In",
   "byteOut": "Byte Out",
   "stopVpn": "Stop VPN",
@@ -33,6 +34,11 @@
   "cancel": "Cancel",
   "delete": "Delete",
   "confirmation": "Confirmation",
+  "welcome": "Welcome to Aegister VPN",
+  "next": "Next",
+  "welcomeMessage": "Your secure connection to the internet.",
+  "getYourActivationKey": "Get Your Activation Key",
+  "activationKeyInstructions": "Visit our platform app.aegister.com to obtain your activation key.",
   "@appTitle": {
     "description": "Title of the application in the app bar"
   },
@@ -131,5 +137,17 @@
   },
   "@confirmation": {
     "description": "Title for confirmation dialogs"
+  },
+  "@welcome": {
+    "description": "Message shown on the welcome page."
+  },
+  "@next": {
+    "description": "Label for the next button to move to the next page."
+  },
+  "@getYourActivationKey": {
+    "description": "Title for the page explaining how to get the activation key."
+  },
+  "@activationKeyInstructions": {
+    "description": "Message explaining how to obtain the activation key."
   }
 }

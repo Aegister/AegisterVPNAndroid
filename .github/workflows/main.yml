@@ -3,15 +3,21 @@ name: Create Release
 on:
   push:
     tags:
-      - 'v*.*' 
+      - 'v*.*'
 
 jobs:
   create_release:
-    runs-on: Android
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
 
       - name: Create GitHub Release
         id: create_release
@@ -28,6 +34,6 @@ jobs:
         uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/app/outputs/flutter/app-release.apk
-          asset_name: app-release.zip
+          asset_path: ./build/app/outputs/flutter/app-release.apk  
+          asset_name: app-release.apk
           asset_content_type: application/zip
