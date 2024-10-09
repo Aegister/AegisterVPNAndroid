@@ -12,13 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: flutter pub get
-
-      - name: Build APK
-        run: flutter build apk --release
-
+        
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1

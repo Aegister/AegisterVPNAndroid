@@ -1,5 +1,4 @@
-# By Harsh H. Rajpurohit
-name: vpn_basic_project
+name: AegisterVPN
 description: Flutter Android VPN based on OpenVPN Library.
 publish_to: 'none'
 
@@ -12,7 +11,7 @@ environment:
 # App dependencies
 dependencies:
   http:
-  path_provider:
+  path_provider: ^2.1.4
   shared_preferences:
   flutter:
     sdk: flutter
