@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../models/background.dart';
 
 class ActivationScreen extends StatefulWidget {
   @override
@@ -57,40 +58,48 @@ class _ActivationScreenState extends State<ActivationScreen> {
     final localizations = AppLocalizations.of(context);
 
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (page) {
-                setState(() {
-                  _currentPage = page;
-                });
-              },
-              children: [
-                _buildPage(
-                  title: localizations?.welcome ?? 'Welcome!',
-                  content: localizations?.welcomeMessage ?? "Your secure connection to the internet.",
-                  buttonText: localizations?.next ?? 'Next',
-                ),
-                _buildPage(
-                  title: localizations?.getYourActivationKey ?? 'Get Your Activation Key',
-                  content: localizations?.activationKeyInstructions ?? "Visit our platform app.aegister.com to obtain your activation key." ,
-                  buttonText: localizations?.next ?? 'Next',
-                ),
-                _buildActivationPage(localizations),
-              ],
+      body: BackgroundLogo(
+        logoPath: 'assets/images/Aegister.png',
+        opacity: 0.5,
+        blurStrength: 10.0,
+        offsetX: 175.0,
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                onPageChanged: (page) {
+                  setState(() {
+                    _currentPage = page;
+                  });
+                },
+                children: [
+                  _buildPage(
+                    title: localizations?.welcome ?? 'Welcome!',
+                    content: localizations?.welcomeMessage ?? "Your secure connection to the internet.",
+                    buttonText: localizations?.next ?? 'Next',
+                  ),
+                  _buildPage(
+                    title: localizations?.getYourActivationKey ?? 'Get Your Activation Key',
+                    content: localizations?.activationKeyInstructions ?? "Visit our platform app.aegister.com to obtain your activation key.",
+                    buttonText: localizations?.next ?? 'Next',
+                  ),
+                  _buildActivationPage(localizations),
+                ],
+              ),
             ),
-          ),
-          _buildNavigation()
-        ],
+            _buildNavigation()
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildPage({required String title, required String content, required String buttonText}) {
     // Get the current brightness (light or dark mode)
-    final brightness = MediaQuery.of(context).platformBrightness;
+    final brightness = MediaQuery
+        .of(context)
+        .platformBrightness;
 
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -99,7 +108,9 @@ class _ActivationScreenState extends State<ActivationScreen> {
         children: [
           // Add image based on the brightness
           Image.asset(
-            brightness == Brightness.dark ? 'assets/images/Logo.png' : 'assets/images/Logo-black.png',
+            brightness == Brightness.dark
+                ? 'assets/images/Logo.png'
+                : 'assets/images/Logo-black.png',
             height: 55,
           ),
           SizedBox(height: 20),
@@ -117,7 +128,8 @@ class _ActivationScreenState extends State<ActivationScreen> {
           SizedBox(height: 40),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xFF2584BE), // Accent color for the background
+              backgroundColor: Color(0xFF2584BE),
+              // Accent color for the background
               foregroundColor: Colors.white, // White text color
             ),
             child: Text(buttonText),
@@ -127,6 +139,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
       ),
     );
   }
+
 
   Widget _buildActivationPage(AppLocalizations? localizations) {
     return Padding(

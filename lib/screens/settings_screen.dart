@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../models/background.dart';
 
 
 class SettingsScreen extends StatefulWidget {
@@ -37,7 +38,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     return Scaffold(
       appBar: AppBar(title: Text(localizations?.settingsTitle ?? 'Settings')),
-      body: Padding(
+    body: BackgroundLogo(
+    logoPath: 'assets/images/Aegister.png',
+    opacity: 0.5,
+    blurStrength: 10.0,
+    offsetX: 175.0,
+      child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -93,6 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
       ),
+    )
     );
   }
 

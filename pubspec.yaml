@@ -12,11 +12,11 @@ environment:
 dependencies:
   http:
   path_provider: ^2.1.4
+  url_launcher: ^6.0.3
   shared_preferences:
   flutter:
     sdk: flutter
 
-  
   # Cupertino style icons
   cupertino_icons: ^1.0.8
   flutter_localizations:

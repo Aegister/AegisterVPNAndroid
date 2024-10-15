@@ -58,7 +58,7 @@ class VpnEngine {
   }
 
   ///All Stages of connection
-  static const String vpnConnected = "connected";
+  static const String vpnConnected = "disconnect";
   static const String vpnDisconnected = "disconnected";
   static const String vpnWaitConnection = "wait_connection";
   static const String vpnAuthenticating = "authenticating";

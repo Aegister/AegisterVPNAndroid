@@ -49,10 +49,10 @@ android {
 
     defaultConfig {
         applicationId = "com.Aegister.AegisterVPN"
-        minSdk = 24
+        minSdk = 21
         targetSdk = flutter.targetSdkVersion
-        versionCode = 1
-        versionName = "1.03"
+        versionCode = 4
+        versionName = "1.0.6"
         multiDexEnabled true
     }
 
