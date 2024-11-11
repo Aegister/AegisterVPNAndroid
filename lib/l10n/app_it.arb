@@ -10,6 +10,8 @@
   "welcome": "Benvenuti in Aegister VPN",
   "next": "Avanti",
   "or": "O",
+  "noVpnProfiles": "Nessun profilo VPN trovato per questa email.",
+  "fetchVpnFailed": "Non è riuscito a recuperare il profilo VPN.",
   "activationTitle": "Attivazione",
   "activationIntro": "\nInserire la chiave di attivazione o accedere per continuare",
   "introText": "Proteggete la vostra connessione a Internet con il nostro servizio VPN",

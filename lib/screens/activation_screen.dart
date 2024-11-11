@@ -102,14 +102,16 @@ class _ActivationScreenState extends State<ActivationScreen> {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setString('user_email', userEmail);
 
-      await sendEmailToApi(userEmail);
+      await sendEmailToApi(context, userEmail);
 
     } else {
       print('Failed to fetch user info');
     }
   }
 
-  Future<void> sendEmailToApi(String email) async {
+  Future<void> sendEmailToApi(BuildContext context, String email) async {
+    final localizations = AppLocalizations.of(context);
+
     final response = await http.get(
       Uri.parse('https://app.aegister.com/api/v1/vpn?email=$email&include_cert=true'),
       headers: {'X-Aegister-Token': ''},
@@ -127,10 +129,16 @@ class _ActivationScreenState extends State<ActivationScreen> {
         await _useVpnCertificate(vpnCertContent);
 
       } else {
-        print('No VPN profiles found for this email.');
+        print(localizations?.noVpnProfiles ?? 'No VPN profiles found for this email.');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(localizations?.noVpnProfiles ?? 'No VPN profiles found for this email.')),
+        );
       }
     } else {
-      print('Failed to fetch VPN profiles.');
+      print(localizations?.fetchVpnFailed ?? 'Failed to fetch VPN profiles.');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(localizations?.fetchVpnFailed ?? 'Failed to fetch VPN profiles.')),
+      );
     }
   }
 

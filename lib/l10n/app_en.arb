@@ -25,6 +25,8 @@
   "activationTitle": "Activation",
   "activationIntro": "Enter your activation key or sign in to continue",
   "introText": "Secure your internet connection with our VPN service",
+  "noVpnProfiles": "No VPN profiles found for this email.",
+  "fetchVpnFailed": "Failed to fetch VPN profile.",
   "submit": "Submit",
   "confirmDeletion": "Confirm Deletion",
   "deleteVpnConfig": "Are you sure you want to delete the current VPN configuration?",
