@@ -83,10 +83,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              child: Icon(
-                Icons.delete_forever,
-                color: Colors.red,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF2584BE),
+                foregroundColor: Colors.redAccent,
               ),
+              child: Text( "Log out"),
               onPressed: () async {
                 bool confirm = await _showDeleteConfirmationDialog();
                 if (confirm) {
@@ -136,16 +137,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
       if (await file.exists()) {
         await file.delete();
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.remove('activation_key');
+
         setState(() {
           _activationKeyController.clear();
         });
+
+        _showConfirmationDialog(
+          AppLocalizations.of(context)?.vpnConfigDeleted ??
+              'VPN configuration deleted successfully.',
+          onConfirmed: () {
+            // Navigate back to the ActivationScreen
+            Navigator.of(context).pushReplacementNamed('/activation');
+          },
+        );
       } else {
-        _showConfirmationDialog(AppLocalizations.of(context)?.vpnConfigNotFound ?? 'No VPN configuration file found.');
+        _showConfirmationDialog(
+          AppLocalizations.of(context)?.vpnConfigNotFound ??
+              'No VPN configuration file found.',
+        );
       }
     } catch (e) {
-      _showConfirmationDialog(AppLocalizations.of(context)?.errorOccurred ?? 'Error deleting VPN configuration: $e');
+      _showConfirmationDialog(
+        AppLocalizations.of(context)?.errorOccurred ??
+            'Error deleting VPN configuration: $e',
+      );
     }
   }
 
@@ -182,10 +200,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     )) ?? false;
   }
 
-  Future<void> _showConfirmationDialog(String message) async {
+  Future<void> _showConfirmationDialog(String message, {VoidCallback? onConfirmed}) async {
     final localizations = AppLocalizations.of(context); // Fetch localizations here
 
-    return showDialog<void>(
+    await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -193,7 +211,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
           content: Text(message),
           actions: <Widget>[
             TextButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () {
+                Navigator.of(context).pop();
+                if (onConfirmed != null) {
+                  onConfirmed();
+                }
+              },
               child: Text(localizations?.ok ?? 'OK'),
             ),
           ],
@@ -201,5 +224,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       },
     );
   }
+
 
 }

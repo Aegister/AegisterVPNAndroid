@@ -53,8 +53,7 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = 4
         versionName = "1.0.6"
-        multiDexEnabled true
-    }
+        manifestPlaceholders += [appAuthRedirectScheme: "aegistervpn"]    }
 
     signingConfigs {
         release {

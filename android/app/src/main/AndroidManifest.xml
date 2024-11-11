@@ -17,42 +17,58 @@
 
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:exported="true"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
 
-            <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"/>
+        <meta-data
+            android:name="io.flutter.embedding.android.NormalTheme"
+            android:resource="@style/NormalTheme"/>
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+
+        </intent-filter>
+
+    </activity>
+        <activity
+            android:name="com.linusu.flutter_web_auth_2.CallbackActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter android:label="flutter_web_auth_2">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="aegistervpn"/>
             </intent-filter>
         </activity>
+    <meta-data
+        android:name="flutterEmbedding"
+        android:value="2" />
 
-        <meta-data
-            android:name="flutterEmbedding"
-            android:value="2" />
+    <activity
+        android:name="de.blinkt.openvpn.DisconnectVPNActivity"
+        android:excludeFromRecents="true"
+        android:noHistory="true"
+        android:exported="false"
+        android:taskAffinity=".DisconnectVPN"
+        android:theme="@style/blinkt.dialog" />
 
-        <activity
-            android:name="de.blinkt.openvpn.DisconnectVPNActivity"
-            android:excludeFromRecents="true"
-            android:noHistory="true"
-            android:exported="false"
-            android:taskAffinity=".DisconnectVPN"
-            android:theme="@style/blinkt.dialog" />
-
-        <service
-            android:name="de.blinkt.openvpn.core.OpenVPNService"
-            android:exported="true"
-            android:permission="android.permission.BIND_VPN_SERVICE">
-            <intent-filter>
-                <action android:name="android.net.VpnService" />
-            </intent-filter>
-        </service>
-    </application>
+    <service
+        android:name="de.blinkt.openvpn.core.OpenVPNService"
+        android:exported="true"
+        android:permission="android.permission.BIND_VPN_SERVICE">
+        <intent-filter>
+            <action android:name="android.net.VpnService" />
+        </intent-filter>
+    </service>
+</application>
 </manifest>
