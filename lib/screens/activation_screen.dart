@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
+import 'package:logger/logger.dart';
 
 class ActivationScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class ActivationScreen extends StatefulWidget {
 
 class _ActivationScreenState extends State<ActivationScreen> {
   PageController _pageController = PageController();
+  final logger = Logger();
   int _currentPage = 0;
   TextEditingController _activationKeyController = TextEditingController();
   bool isFetching = false;
@@ -33,7 +35,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
         '?client_id=AegisterVPN'
         '&redirect_uri=aegistervpn://callback'
         '&response_type=code'
-        '&scope=openid%20email';
+        '&scope=openid';
 
     try {
       final result = await FlutterWebAuth2.authenticate(
@@ -62,92 +64,74 @@ class _ActivationScreenState extends State<ActivationScreen> {
     }
   }
 
-
   Future<void> _getTokens(String authorizationCode) async {
-    final response = await http.post(
-      Uri.parse(
-          'https://app.aegister.com/keycloak/realms/aegister/protocol/openid-connect/token'),
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: {
-        'grant_type': 'authorization_code',
-        'code': authorizationCode,
-        'redirect_uri': 'aegistervpn://callback',
-        'client_id': 'AegisterVPN',
-      },
-    );
-
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      String accessToken = data['access_token'];
-      _getUserInfo(accessToken);
-    } else {
-      print('Failed to exchange authorization code for tokens');
-    }
-  }
-
-  Future<void> _getUserInfo(String accessToken) async {
-    final response = await http.get(
-      Uri.parse(
-          'https://app.aegister.com/keycloak/realms/aegister/protocol/openid-connect/userinfo'),
-      headers: {'Authorization': 'Bearer $accessToken'},
-    );
-
-    if (response.statusCode == 200) {
-      final userInfo = jsonDecode(response.body);
-      String userEmail = userInfo['email'];
-      print('User email: $userEmail');
-
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      await prefs.setString('user_email', userEmail);
-
-      await sendEmailToApi(context, userEmail);
-
-    } else {
-      print('Failed to fetch user info');
-    }
-  }
-
-  Future<void> sendEmailToApi(BuildContext context, String email) async {
-    final localizations = AppLocalizations.of(context);
-
-    final response = await http.get(
-      Uri.parse('https://app.aegister.com/api/v1/vpn?email=$email&include_cert=true'),
-      headers: {'X-Aegister-Token': ''},
-    );
-
-    if (response.statusCode == 200) {
-      final responseData = jsonDecode(response.body);
-
-      if (responseData['error'] == 0 && responseData['data'].isNotEmpty) {
-        final vpnData = responseData['data'][0];
-        final vpnCertContent = vpnData['cert'];
-
-        print('VPN Certificate Content: $vpnCertContent');
-
-        await _useVpnCertificate(vpnCertContent);
-
-      } else {
-        print(localizations?.noVpnProfiles ?? 'No VPN profiles found for this email.');
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(localizations?.noVpnProfiles ?? 'No VPN profiles found for this email.')),
-        );
-      }
-    } else {
-      print(localizations?.fetchVpnFailed ?? 'Failed to fetch VPN profiles.');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(localizations?.fetchVpnFailed ?? 'Failed to fetch VPN profiles.')),
+    try {
+      final response = await http.post(
+        Uri.parse(
+            'https://app.aegister.com/keycloak/realms/aegister/protocol/openid-connect/token'),
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: {
+          'grant_type': 'authorization_code',
+          'code': authorizationCode,
+          'redirect_uri': 'aegistervpn://callback',
+          'client_id': 'AegisterVPN',
+          'scope': 'openid',
+        },
       );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        logger.d("Token response data: $data");
+        String accessToken = data['access_token'];
+        logger.i("Access token retrieved: $accessToken"); 
+        await sendEmailToApi(accessToken);
+      } else {
+        logger.e("Failed to exchange authorization code for tokens. "
+            "Status code: ${response.statusCode}, Body: ${response.body}");
+      }
+    } catch (e) {
+      logger.e("Error in _getTokens: $e");
+    }
+  }
+
+
+
+  Future<void> sendEmailToApi(String token) async {
+    try {
+      final response = await http.get(
+        Uri.parse('https://app.aegister.com/api/v1/vpn?include_cert=true'),
+        headers: {'X-Aegister-Token': token },
+      );
+
+      print("Sending email to API");
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+
+        if (responseData['error'] == 0 && responseData['data'] != null && responseData['data'].isNotEmpty) {
+          logger.i("Response received: $responseData");
+          final vpnData = responseData['data'][0];
+          final vpnCertContent = vpnData['cert'];
+
+          print('VPN Certificate Content: $vpnCertContent');
+          await _useVpnCertificate(vpnCertContent);
+        } else {
+          print('No VPN profiles found.');
+          // Optionally handle UI feedback here if needed
+        }
+      } else {
+        print('Failed to fetch VPN profiles: ${response.body}');
+      }
+    } catch (e) {
+      print('Error in sendEmailToApi: $e');
     }
   }
 
   Future<void> _useVpnCertificate(String vpnCertContent) async {
     try {
-      // Save the certificate content as an OVPN file
       await saveOvpnFile(vpnCertContent);
 
-      // Optionally, store an indicator in SharedPreferences if needed
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('vpn_cert_saved', true);
 
@@ -169,7 +153,6 @@ class _ActivationScreenState extends State<ActivationScreen> {
 
       // Check if the file exists
       if (await file.exists()) {
-        // If the file exists, navigate to the main screen
         Navigator.of(context).pushReplacementNamed('/main');
       }
     } catch (e) {

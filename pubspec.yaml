@@ -14,6 +14,7 @@ dependencies:
   flutter_web_auth_2: ^4.0.0-alpha.0
   path_provider: ^2.1.4
   url_launcher: ^6.0.3
+  logger: ^2.5.0
   shared_preferences:
   flutter:
     sdk: flutter
