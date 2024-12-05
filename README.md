@@ -23,7 +23,7 @@ Follow these steps to build your own APK with your custom VPN configuration.
 
 ```bash
 git clone https://github.com/Aegister/AegisterVPNAndroid.git
-cd aegister-vpn
+cd aegisterVPNAndroid
  ```
 
 ### Step 2: Build the APK
@@ -32,7 +32,8 @@ Now, you're ready to build your APK. Run the following commands to build the rel
 
 ```bash
 flutter clean
-flutter build apk --release
+flutter pub get
+flutter build apk 
 ```
 
 After the build is complete, your APK will be located in the following path:
