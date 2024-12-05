@@ -194,3 +194,4 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 !.vscode/settings.json
 untranslated_messages.json
+keystore_base64.txt
