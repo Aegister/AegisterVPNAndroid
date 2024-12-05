@@ -101,7 +101,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
   Future<void> sendEmailToApi(String token) async {
     try {
       final response = await http.get(
-        Uri.parse('https://app.aegister.com/api/v1/vpn?include_cert=true'),
+        Uri.parse('https://app.aegister.com/api/v1/vpn?include_cert=true&only_mine=true'),
         headers: {'X-Aegister-Token': token },
       );
 
