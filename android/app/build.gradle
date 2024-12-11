@@ -52,7 +52,7 @@ android {
         minSdk = 21
         targetSdk = flutter.targetSdkVersion
         versionCode = 5
-        versionName = "1.0.7"
+        versionName = "1.0.8"
         manifestPlaceholders += [appAuthRedirectScheme: "aegistervpn"]    }
 
     signingConfigs {

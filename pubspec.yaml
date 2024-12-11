@@ -3,7 +3,7 @@ description: Flutter Android VPN based on OpenVPN Library.
 publish_to: 'none'
 
 # App Version
-version: 1.0.2+2
+version: 1.0.3+2
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
@@ -40,6 +40,11 @@ flutter:
   # Enabling material design
   uses-material-design: true
   generate: true
+  fonts:
+    - family: Archivo
+      fonts:
+        - asset: assets/fonts/Archivo.ttf
+          weight: 700
 
   # App assets
   assets:

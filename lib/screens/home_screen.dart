@@ -69,9 +69,6 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(title: Text(localizations.appTitle)),
       body: BackgroundLogo(
         logoPath: 'assets/images/Aegister.png',
-        opacity: 0.5,
-        blurStrength: 10.0,
-        offsetX: 175.0,
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -111,9 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         "${localizations.byteIn}: ${snapshot.data?.byteIn ?? ""}, ${localizations.byteOut}: ${snapshot.data?.byteOut ?? ""}",
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: brightness == Brightness.dark ? Colors.white70 : Colors.black87,
-                        ),
                       ),
                 ),
               ],

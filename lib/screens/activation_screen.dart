@@ -252,9 +252,7 @@ class _ActivationScreenState extends State<ActivationScreen> {
                 Expanded(
                   child: Divider(
                     thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black, // Change divider color based on theme
+                    color: Colors.white
                   ),
                 ),
                 Padding(
@@ -262,18 +260,14 @@ class _ActivationScreenState extends State<ActivationScreen> {
                   child: Text(
                     localizations?.or ?? 'or',
                     style: TextStyle(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white
-                          : Colors.black, // Change text color based on theme
+                      color: Colors.white
                     ),
                   ),
                 ),
                 Expanded(
                   child: Divider(
                     thickness: 1,
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black, // Change divider color based on theme
+                    color: Colors.white
                   ),
                 ),
               ],
@@ -364,9 +358,6 @@ class _ActivationScreenState extends State<ActivationScreen> {
     return Scaffold(
       body: BackgroundLogo(
         logoPath: 'assets/images/Aegister.png',
-        opacity: 0.5,
-        blurStrength: 10.0,
-        offsetX: 175.0,
         child: Column(
           children: [
             Expanded(

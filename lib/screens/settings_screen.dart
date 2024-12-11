@@ -40,9 +40,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(title: Text(localizations?.settingsTitle ?? 'Settings')),
     body: BackgroundLogo(
     logoPath: 'assets/images/Aegister.png',
-    opacity: 0.5,
-    blurStrength: 10.0,
-    offsetX: 175.0,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -177,28 +174,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  Future<bool> _showDeleteConfirmationDialog() async {
-    final localizations = AppLocalizations.of(context); // Get it again here
-    return (await showDialog<bool>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(localizations?.confirmDeletion ?? 'Confirm Deletion'),
-          content: Text(localizations?.deleteVpnConfig ?? 'Are you sure you want to delete the current VPN configuration?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: Text(localizations?.cancel ?? 'Cancel'),
+    Future<bool> _showDeleteConfirmationDialog() async {
+      final localizations = AppLocalizations.of(context); // Get it again here
+      return (await showDialog<bool>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(localizations?.confirmDeletion ?? 'Confirm Deletion',
+              style: TextStyle(color: Color(0xFF2584BE)),
             ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(localizations?.delete ?? 'Delete'),
+            content: Text(localizations?.deleteVpnConfig ?? 'Are you sure you want to delete the current VPN configuration?',
+              style: TextStyle(color: Color(0xFF2584BE)),
+
             ),
-          ],
-        );
-      },
-    )) ?? false;
-  }
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Text(localizations?.cancel ?? 'Cancel'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(true),
+                child: Text(localizations?.delete ?? 'Delete'),
+              ),
+            ],
+          );
+        },
+      )) ?? false;
+    }
 
   Future<void> _showConfirmationDialog(String message, {VoidCallback? onConfirmed}) async {
     final localizations = AppLocalizations.of(context); // Fetch localizations here
@@ -207,8 +209,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(localizations?.confirmation ?? 'Confirmation'),
-          content: Text(message),
+          title: Text(localizations?.confirmation ?? 'Confirmation',
+            style: TextStyle(color: Color(0xFF2584BE)),
+
+          ),
+          content: Text(message,
+            style: TextStyle(color: Color(0xFF2584BE)),
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
